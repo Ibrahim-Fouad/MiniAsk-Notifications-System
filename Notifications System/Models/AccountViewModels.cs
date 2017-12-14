@@ -64,6 +64,18 @@ namespace Notifications_System.Models
 
     public class RegisterViewModel
     {
+
+        [Required]
+        [Display(Name = "Full Name")]
+        [StringLength(50)]
+        public string FullName { get; set; }
+
+        [Required]
+        [Display(Name = "Username")]
+        [StringLength(50)]
+        [RegularExpression("^[A-Za-z][A-Za-z0-9]*$", ErrorMessage = "Username must be in English letters and numbers only.")]
+        public string Username { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
