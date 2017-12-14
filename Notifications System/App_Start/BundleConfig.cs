@@ -23,6 +23,8 @@ namespace Notifications_System
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/flatly.bootstrap.css",
+                      "~/Content/font-awesome.css",
+                      "~/Content/bootstrap.override.css",
                       "~/Content/site.css"));
         }
     }

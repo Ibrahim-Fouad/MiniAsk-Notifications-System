@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Mini Ask</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
+<body class="main-site">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -17,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Mini Ask", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -29,16 +29,51 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    <div>
+        <div class="container body-content">
+            <div class="row">
+                <div class="col-sm-8 col-xs-12">
+                    @RenderBody()
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                    <aside class="side">
+                        <footer>
+                            <ul class="social-icons">
+                                <li>
+                                    <a href="https://www.facebook.com/IIbrahim.Fouad" target="_blank">
+                                        <i class="fa fa-facebook-square fa-lg"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-twitter-square fa-lg"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/IIbrahim.Fouad" target="_blank">
+                                        <i class="fa fa-instagram fa-lg"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.github.com/Ibrahim-Fouad" target="_blank">
+                                        <i class="fa fa-github-square fa-lg"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="mailto:iibrahim.fouad@gmail.com">
+                                        <i class="fa fa-envelope fa-lg"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <p>&copy; @DateTime.Now.Year - Mini Ask Notifications System By Ibrahim Fouad</p>
+                        </footer>
+                    </aside>
+                </div>
+            </div>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/libs")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -1,31 +1,129 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Feed";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+@Html.Partial("_askBox")
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+<section class="questions">
+   
+    <section class="item">
+        <div class="question">
+            <div class="text">
+                Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+            </div>
+            <div class="sender">
+                <img src="~/Images/514607.jpg" alt="sender name" /> <a href="#">Sender Name</a>
+            </div>
+        </div>
+        <div class="answer">
+            <div class="reciever">
+                <img src="~/Images/514607.jpg" alt="reciever name" /> <a href="#">reciever Name</a>
+            </div>
+            <div class="text">
+                Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod.
+            </div>
+        </div>
+        <div class="operations">
+            <div class="left-side">
+                <a href="#" class="like">
+                    <i class="fa fa-heart"></i>
+                    <span class="likes-number">5</span>
+                </a>
+            </div>
+            <div class="right-side">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-share"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa fa-retweet"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="item">
+        <div class="question">
+            <div class="text">
+                Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+            </div>
+            <div class="sender">
+                <img src="~/Images/514607.jpg" alt="sender name" /> <a href="#">Sender Name</a>
+            </div>
+        </div>
+        <div class="answer">
+            <div class="reciever">
+                <img src="~/Images/514607.jpg" alt="reciever name" /> <a href="#">reciever Name</a>
+            </div>
+            <div class="text">
+                Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod.
+            </div>
+        </div>
+        <div class="operations">
+            <div class="left-side">
+                <a href="#" class="like">
+                    <i class="fa fa-heart"></i>
+                    <span class="likes-number">5</span>
+                </a>
+            </div>
+            <div class="right-side">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-share"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa fa-retweet"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="item">
+        <div class="question">
+            <div class="text">
+                Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+            </div>
+            <div class="sender">
+                <img src="~/Images/514607.jpg" alt="sender name" /> <a href="#">Sender Name</a>
+            </div>
+        </div>
+        <div class="answer">
+            <div class="reciever">
+                <img src="~/Images/514607.jpg" alt="reciever name" /> <a href="#">reciever Name</a>
+            </div>
+            <div class="text">
+                Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod.
+            </div>
+        </div>
+        <div class="operations">
+            <div class="left-side">
+                <a href="#" class="like">
+                    <i class="fa fa-heart"></i>
+                    <span class="likes-number">5</span>
+                </a>
+            </div>
+            <div class="right-side">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-share"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="fa fa-retweet"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</section>

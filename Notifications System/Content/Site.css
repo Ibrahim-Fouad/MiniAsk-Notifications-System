@@ -1,6 +1,7 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 80px;
     padding-bottom: 20px;
+    background: #2b3237;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -16,9 +17,176 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
+/* Set width on the form input elements since they're 100% wide by default *
 input,
 select,
 textarea {
     max-width: 280px;
+}*/
+
+
+.main-site {
+    margin: 0 auto;
 }
+
+.side {
+    position: fixed;
+    padding-top: 20px;
+}
+
+.side ul.social-icons {
+    list-style: none;
+    text-align: center;
+
+}
+
+.side .social-icons li {
+    display: inline;
+    padding: 10px;
+}
+
+.side .social-icons li a {
+    font-size: 20px;
+    text-decoration: none;
+    color: #AAA;
+    -ms-transition: color ease-in-out .3s;
+    -o-transition: color ease-in-out .3s;
+    -webkit-transition: color ease-in-out .3s;
+    transition: color ease-in-out .3s;
+}
+
+.side .social-icons li a:hover {
+    color: #FFF;
+}
+
+
+/* AskBox */
+.askbox {
+    background: #888;
+    background: rgba(0, 0, 0, .5);
+    padding: 10px;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.askbox .head ul {
+    list-style: none;
+    padding: 0;
+}
+    .askbox .head ul li {
+        display: inline;
+        padding-right: 20px;
+        font-size: 16px;
+
+        
+    }
+    .askbox .head ul li a {
+        font-weight: bold;
+        color: #AAA;
+        text-decoration: none;
+        transition: color ease-in-out .1s
+    }
+    .askbox .head ul li a:hover {
+        color: #FFF;
+    }
+
+.askbox .body {
+    padding: 5px 0;
+}
+.askbox .foot {
+    height: 50px;
+}
+.askbox .foot .options label {
+    line-height: 50px;
+}
+.askbox .foot .submit button {
+    width: 100%;
+    right: 0;
+    background: #FF643C;
+
+}
+
+/* AskBox */
+
+
+/* Questions section */
+section.questions {
+    background: #efefef;
+    margin-top: 20px;
+}
+
+section.questions .item {
+    background: #fff;
+    margin: 10px 0;
+    padding: 20px;
+}
+section.questions .item .question .text{
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+}
+section.questions .item .question .sender {
+    padding-bottom: 10px;
+}
+section.questions .item .question .sender img {
+    width: 30px;
+    border-radius: 50%;
+    margin-right: 5px
+}
+
+section.questions .item .question .sender a {
+    font-size: 13px;
+    text-decoration: none;
+    color: #AAA;
+}
+
+section.questions .item .answer .reciever img{
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 5px
+}
+
+section.questions .item .answer .reciever a {
+    text-decoration: none;
+    color: #AAA;
+}
+
+section.questions .item .answer .text {
+    padding: 10px;
+    color: #000;
+}
+section.questions .item .operations {
+    padding: 10px 0;
+}
+
+section.questions .item .operations .left-side {
+    float: left;
+}
+
+section.questions .item .operations .left-side .like {
+    color: #AAA;
+    font-size: 18px;
+}
+
+section.questions .item .operations .left-side .like i {
+    margin-right: 5px;
+}
+
+section.questions .item .operations .right-side {
+    float: right;
+}
+section.questions .item .operations .right-side ul {
+    list-style: none;
+    padding: 0
+}
+
+section.questions .item .operations .right-side ul li {
+    display: inline;
+    padding: 20px;
+    font-size: 18px;
+}
+
+section.questions .item .operations .right-side ul li a {
+    color: #AAA;
+}
+/* Questions section */
