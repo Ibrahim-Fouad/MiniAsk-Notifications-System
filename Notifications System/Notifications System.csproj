@@ -202,6 +202,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\UsernameFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animate.css" />
@@ -290,6 +291,7 @@
     <Content Include="Views\Home\_askBox.cshtml" />
     <Content Include="Views\Home\Account.cshtml" />
     <Content Include="Views\Home\UnAnswerdQuestion.cshtml" />
+    <Content Include="Views\Home\GetUsername.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

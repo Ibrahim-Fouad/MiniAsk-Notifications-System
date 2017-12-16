@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Notifications_System.Models;
 using Notifications_System.Models.AskModels;
+using Notifications_System.ViewModels;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -22,6 +23,24 @@ namespace Notifications_System.Controllers
         {
             return View();
         }
+
+        [Route("user/{username}")]
+        public ActionResult GetUsername(string username)
+        {
+            var user = _context.Users.SingleOrDefault(u => u.UniqueUsername == username);
+            if (user == null)
+            {
+                return HttpNotFound("The user which you looking for is not exists.");
+            }
+            var userPosts = _context.Posts.Where(u => u.RecieverId == user.Id && u.DateAnswerd != null).Include(m => m.Sender).Include(m => m.Reciever).OrderByDescending(post => post.DateAsked).ToList();
+            var viewModel = new UsernameFormViewModel
+            {
+                User = user,
+                Posts = userPosts
+            };
+            return View(viewModel);
+        }
+
         [Route("account/posts/new")]
         public ActionResult UnAnswerdQuestion()
         {
