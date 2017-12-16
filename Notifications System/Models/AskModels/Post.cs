@@ -20,7 +20,7 @@ namespace Notifications_System.Models.AskModels
 
         public string RecieverId { get; set; }
 
-        public DateTime DateAsked { get; set; } = DateTime.Now;
+        public DateTime DateAsked { get; set; }
 
         public DateTime? DateAnswerd { get; set; }
 

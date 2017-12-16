@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Notifications_System.Models.AskModels.Post>
+@{
+    ViewBag.Title = "New Questions";
+}
+
+<h2>New Questions</h2>
+
+@if (Model.Count() == 0)
+{
+    <p>You have no questions.</p>
+}
+else
+{
+    <section class="questions">
+        @foreach (var post in Model)
+        {
+            using (Html.BeginForm("AskBox", "Home", FormMethod.Post))
+            {
+                <section class="item">
+                    <div class="question">
+                        <div class="text">
+                            <input type="text" value="@post.Question" readonly="readonly" name="Question" style="outline: none; border: none"/>
+                        </div>
+                        @if (post.Sender != null)
+                        {
+                            <div class="sender">
+                                <img src="~/Images/514607.jpg" alt="sender name" /> <a href="#">@post.Sender.FullName</a>
+                            </div>
+                        }
+                    </div>
+                    <div class="answer">
+                        <div class="text">
+                            <textarea name="Answer" rows="5" class="form-control" placeholder="What is your answer?"></textarea>
+                        </div>
+                    </div>
+                    <div class="operations">
+                        <div class="row">
+                            <div class="col-sm-8 col-xs-8">
+                            </div>
+                            <div class="col-sm-4 col-xs-4">
+                                <div class="submit">
+                                    <button class="btn btn-primary btn-block">
+                                        <i class="fa fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- To prevent get false in ModelState  -->
+                <input type="hidden" value="anytext" name="SenderId"/>
+                <input type="hidden" value="anytext" name="RecieverId"/>
+                
+
+                 <!-- To enable edit  -->
+                <input type="hidden" value="@post.Id" name="Id"/>
+
+                @Html.AntiForgeryToken()
+            }
+        }
+    </section>
+}

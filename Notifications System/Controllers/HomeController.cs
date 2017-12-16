@@ -22,14 +22,24 @@ namespace Notifications_System.Controllers
         {
             return View();
         }
+        [Route("account/posts/new")]
+        public ActionResult UnAnswerdQuestion()
+        {
+            var userId = User.Identity.GetUserId();
+            var posts = _context.Posts.Where(u => u.RecieverId == userId && u.DateAnswerd == null).Include(u => u.Sender).OrderByDescending(post => post.DateAsked).ToList();
+            return View(posts);
+        }
 
-        [Route("home/posts")]
+
+        [Route("account/posts")]
         public ActionResult Account()
         {
             var userId = User.Identity.GetUserId();
-            var posts = _context.Posts.Where(u => u.RecieverId == userId).Include(u => u.Sender).OrderByDescending(post => post.DateAsked).ToList();
+            var posts = _context.Posts.Where(u => u.RecieverId == userId && u.DateAnswerd != null).Include(u => u.Sender).Include(u => u.Reciever).OrderByDescending(post => post.DateAnswerd).ToList();
             return View(posts);
         }
+
+
 
         [HttpPost]
         [AllowAnonymous]
@@ -41,13 +51,29 @@ namespace Notifications_System.Controllers
                 return RedirectToAction("Index");
             }
 
-            post.DateAsked = DateTime.Now;
-            if (post.IsAnonymously)
+            if (post.Id == 0)
             {
-                post.SenderId = null;
+                post.DateAsked = DateTime.Now;
+                if (post.IsAnonymously)
+                {
+                    post.SenderId = null;
+                }
+
+                _context.Posts.Add(post);
+            }
+            else
+            {
+                var postIndb = _context.Posts.SingleOrDefault(u => u.Id == post.Id);
+                if (postIndb == null)
+                {
+                    return HttpNotFound();
+                }
+
+                postIndb.DateAnswerd = DateTime.Now;
+                postIndb.Answer = post.Answer;
             }
 
-            _context.Posts.Add(post);
+
             _context.SaveChanges();
             return RedirectToAction("Account");
         }

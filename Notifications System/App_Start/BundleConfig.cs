@@ -10,7 +10,10 @@ namespace Notifications_System
             bundles.Add(new ScriptBundle("~/bundles/libs").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/bootstrap.js",
-                        "~/Scripts/respond.js"));
+                        "~/Scripts/respond.js",
+                        "~/Scripts/bootstrap-notify.js",
+                        "~/Scripts/funcs.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -25,6 +28,7 @@ namespace Notifications_System
                       "~/Content/flatly.bootstrap.css",
                       "~/Content/font-awesome.css",
                       "~/Content/bootstrap.override.css",
+                      "~/Content/animate.css",
                       "~/Content/site.css"));
         }
     }
