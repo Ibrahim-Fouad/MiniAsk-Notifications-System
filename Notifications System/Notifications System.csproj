@@ -186,10 +186,19 @@
     <Compile Include="Migrations\201712141029110_InitialMigration.Designer.cs">
       <DependentUpon>201712141029110_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712151303273_CreatePostsTable.cs" />
+    <Compile Include="Migrations\201712151303273_CreatePostsTable.Designer.cs">
+      <DependentUpon>201712151303273_CreatePostsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712151328331_AddIsAnonymousCoulmn.cs" />
+    <Compile Include="Migrations\201712151328331_AddIsAnonymousCoulmn.Designer.cs">
+      <DependentUpon>201712151328331_AddIsAnonymousCoulmn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\AskModels\Post.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -276,6 +285,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\_askBox.cshtml" />
+    <Content Include="Views\Home\Account.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -287,6 +297,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712141029110_InitialMigration.resx">
       <DependentUpon>201712141029110_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712151303273_CreatePostsTable.resx">
+      <DependentUpon>201712151303273_CreatePostsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712151328331_AddIsAnonymousCoulmn.resx">
+      <DependentUpon>201712151328331_AddIsAnonymousCoulmn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

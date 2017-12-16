@@ -199,3 +199,25 @@ section.questions .item .operations .right-side ul li a {
     color: #AAA;
 }
 /* Questions section */
+
+
+li.notifications a {
+    font-size: 20px;
+    position: relative;
+}
+li.notifications a .badge {
+    font-size: 12px;
+    position: absolute;
+    top: 14px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    padding: 4px 0;
+    color: white;
+    background: #ff643c;
+}
+
+li.notifications a:hover .badge {
+    color: #ff643c;
+    background: white;
+}

@@ -1,44 +1,52 @@
-﻿<div class="askbox">
-    <div class="head">
-        <ul class="operation">
-            <li>
-                <a href="#">
-                    <i class="fa fa-question-circle"></i>
-                    Question
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-bar-chart"></i>
-                    poll
-                </a>
-            </li>
-            <li>
-                <a href="#">Shoutout</a>
-            </li>
-        </ul>
-    </div>
-    <div class="body">
-        <textarea name="" rows="1" class="question form-control" placeholder="What, when, why... ask"></textarea>
-    </div>
-    <div class="foot">
-        <div class="row">
-            <div class="col-sm-8 col-xs-8">
-                <div class="options">
-                    <label>
-                        <input type="checkbox" value="" /> Ask Anonymously
-                    </label>
-                </div>
-            </div>
-            <div class="col-sm-4 col-xs-4">
-                <div class="submit">
-                    <button class="btn btn-primary">
-                        <i class="fa fa-paper-plane"></i>
-                    </button>
-                </div>
-            </div>
+﻿@using Microsoft.AspNet.Identity
+
+@using (Html.BeginForm("AskBox","Home", FormMethod.Post))
+{
+
+    @Html.AntiForgeryToken()
+    <div class="askbox">    
+        <div class="head">
+            <ul class="operation">
+                <li>
+                    <a href="#">
+                        <i class="fa fa-question-circle"></i>
+                        Question
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-bar-chart"></i>
+                        poll
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Shoutout</a>
+                </li>
+            </ul>
         </div>
-        
-        
+        <div class="body">
+            <textarea name="Question" rows="1" class="question form-control" placeholder="What, when, why... ask"></textarea>
+        </div>
+        <div class="foot">
+            <div class="row">
+                <div class="col-sm-8 col-xs-8">
+                    <div class="options">
+                        <label>
+                            <input type="checkbox" name="IsAnonymously" value="true" /> Ask Anonymously
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-4">
+                    <div class="submit">
+                        <button class="btn btn-primary">
+                            <i class="fa fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" value="@User.Identity.GetUserId()" name="RecieverId" />
+            <input type="hidden" value="@User.Identity.GetUserId()" name="SenderId" />
+
+        </div>
     </div>
-</div>
+}

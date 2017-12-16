@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Notifications_System.Models.AskModels.Post>
+@{
+    ViewBag.Title = "Posts";
+}
+
+@Html.Partial("_askBox")
+
+
+@if (Model.Count() == 0)
+{
+    <p class="alert">
+        There is no questions.
+    </p>
+}
+else
+{
+    <section class="questions">
+        @foreach (var post in Model)
+        {
+        <section class="item">
+            <div class="question">
+                <div class="text">
+                    @post.Question
+
+                </div>
+                @if (post.Sender != null)
+                {
+                    <div class="sender">
+                        <img src="~/Images/514607.jpg" alt="sender name" /> <a href="#">@post.Sender.FullName</a>
+                    </div>
+                }
+               
+            </div>
+            <div class="answer">
+                <div class="reciever">
+                    <img src="~/Images/514607.jpg" alt="reciever name" /> <a href="#">@post.Reciever.FullName</a>
+                </div>
+                <div class="text">
+                    @post.Answer
+                </div>
+            </div>
+            <div class="operations">
+                <div class="left-side">
+                    <a href="#" class="like">
+                        <i class="fa fa-heart"></i>
+                        <span class="likes-number">5</span>
+                    </a>
+                </div>
+                <div class="right-side">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-share"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa fa-retweet"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        }
+    </section>
+}
