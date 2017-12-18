@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-
+@model Notifications_System.ViewModels.UsernameFormViewModel
 @using (Html.BeginForm("AskBox","Home", FormMethod.Post))
 {
 
@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" value="@User.Identity.GetUserId()" name="RecieverId" />
+            <input type="hidden" value="@Model.User.Id" name="RecieverId" />
             <input type="hidden" value="@User.Identity.GetUserId()" name="SenderId" />
 
         </div>

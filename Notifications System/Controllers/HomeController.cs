@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
+using Notifications_System.Extenstion;
 using Notifications_System.Models;
 using Notifications_System.Models.AskModels;
+using Notifications_System.Models.NotificationModels;
 using Notifications_System.ViewModels;
 using System;
 using System.Data.Entity;
@@ -10,6 +12,7 @@ using System.Web.Mvc;
 namespace Notifications_System.Controllers
 {
 
+    [Authorize]
     public class HomeController : Controller
     {
         private ApplicationDbContext _context = new ApplicationDbContext();
@@ -21,12 +24,17 @@ namespace Notifications_System.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Account");
         }
 
+        [AllowAnonymous]
         [Route("user/{username}")]
         public ActionResult GetUsername(string username)
         {
+            if (User.Identity.GetUsername() == username)
+                return RedirectToAction("Account");
+
+
             var user = _context.Users.SingleOrDefault(u => u.UniqueUsername == username);
             if (user == null)
             {
@@ -77,24 +85,61 @@ namespace Notifications_System.Controllers
                 {
                     post.SenderId = null;
                 }
-
+                else
+                {
+                    var sender = _context.Users.SingleOrDefault(u => u.Id == post.SenderId);
+                    var notification = new Notification
+                    {
+                        RecieverId = post.RecieverId,
+                        SenderId = post.SenderId,
+                        DateCreated = DateTime.Now,
+                        Message =
+                            sender == null
+                                ? "You have new question"
+                                : $"{sender.FullName} has asked you a new question, you can review it."
+                    };
+                    _context.Notifications.Add(notification);
+                }
                 _context.Posts.Add(post);
             }
             else
             {
-                var postIndb = _context.Posts.SingleOrDefault(u => u.Id == post.Id);
-                if (postIndb == null)
+                Post postIndb;
+                if (post.SenderId != null)
                 {
-                    return HttpNotFound();
+                    postIndb = _context.Posts.Include(u => u.Reciever).SingleOrDefault(u => u.Id == post.Id);
+                    if (postIndb == null)
+                    {
+                        return HttpNotFound();
+                    }
+
+                    var notification = new Notification
+                    {
+                        RecieverId = postIndb.SenderId,
+                        SenderId = postIndb.RecieverId,
+                        DateCreated = DateTime.Now,
+                        Message = postIndb.Reciever.FullName + " has answered your question, you can review it."
+                    };
+                    _context.Notifications.Add(notification);
                 }
+                else
+                {
+                    postIndb = _context.Posts.SingleOrDefault(u => u.Id == post.Id);
+                    if (postIndb == null)
+                        return HttpNotFound();
+
+
+                }
+
 
                 postIndb.DateAnswerd = DateTime.Now;
                 postIndb.Answer = post.Answer;
+
             }
 
 
             _context.SaveChanges();
-            return RedirectToAction("Account");
+            return RedirectToAction("UnAnswerdQuestion");
         }
 
         public ActionResult About()

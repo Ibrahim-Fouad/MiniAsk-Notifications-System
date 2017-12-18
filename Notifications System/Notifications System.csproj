@@ -194,12 +194,17 @@
     <Compile Include="Migrations\201712151328331_AddIsAnonymousCoulmn.Designer.cs">
       <DependentUpon>201712151328331_AddIsAnonymousCoulmn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712181220272_CreateNotificationsTable.cs" />
+    <Compile Include="Migrations\201712181220272_CreateNotificationsTable.Designer.cs">
+      <DependentUpon>201712181220272_CreateNotificationsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\AskModels\Post.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NotificationModels\Notification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\UsernameFormViewModel.cs" />
@@ -309,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712151328331_AddIsAnonymousCoulmn.resx">
       <DependentUpon>201712151328331_AddIsAnonymousCoulmn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181220272_CreateNotificationsTable.resx">
+      <DependentUpon>201712181220272_CreateNotificationsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

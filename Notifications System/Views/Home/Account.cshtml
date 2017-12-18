@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Notifications_System.Models.AskModels.Post>
+﻿@using Notifications_System.Extenstion
+@model IEnumerable<Notifications_System.Models.AskModels.Post>
 @{
     ViewBag.Title = "Posts";
 }
 
-@Html.Partial("_askBox")
-
+<h2>@User.Identity.GetUserFullname()</h2>
 
 @if (Model.Count() == 0)
 {
@@ -26,15 +26,15 @@ else
                 @if (post.Sender != null)
                 {
                     <div class="sender">
-                        <img src="~/Images/514607.jpg" alt="sender name" /> <a href="#">@post.Sender.FullName</a>
+                        <img src="~/Images/514607.jpg" alt="sender name" /> <a href="/user/@post.Sender.UniqueUsername">@post.Sender.FullName</a>
                     </div>
                 }
                
             </div>
             <div class="answer">
-                <div class="reciever">
+               <!--  <div class="reciever">
                     <img src="~/Images/514607.jpg" alt="reciever name" /> <a href="/user/@post.Reciever.UniqueUsername">@post.Reciever.FullName</a>
-                </div>
+                </div> -->
                 <div class="text">
                     @post.Answer
                 </div>
