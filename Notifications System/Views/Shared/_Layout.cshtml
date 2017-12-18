@@ -75,5 +75,40 @@
 
     @Scripts.Render("~/bundles/libs")
     @RenderSection("scripts", required: false)
+    
+    @if (User.Identity.IsAuthenticated)
+    {
+        <script>
+            $(document)
+                .ready(function() {
+                    $.getJSON('/ajax/notifications/count',
+                        function(json) {
+                            if (json.success) {
+                                $('.notifications-count').html(json.count).removeClass('hide').addClass('animated bounceIn');
+                            }
+                        });
+
+
+                    function checkForNewNotifications() {
+                        $.ajax({
+                            url: '/ajax/notifications',
+                            timeout: 120000,
+                            success: function (json) {
+                                if (json.success) {
+                                    showAlert(json.notifications.Message);
+                                }
+                                setTimeout(checkForNewNotifications, 5000);
+                            },
+                            error: function () {
+                                setTimeout(checkForNewNotifications, 5000);
+                            }
+                        });
+                        
+                    }
+
+                    checkForNewNotifications();
+                });
+        </script>
+    }
 </body>
 </html>

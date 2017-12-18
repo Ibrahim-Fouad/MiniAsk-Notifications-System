@@ -95,8 +95,8 @@ namespace Notifications_System.Controllers
                         DateCreated = DateTime.Now,
                         Message =
                             sender == null
-                                ? "You have new question"
-                                : $"{sender.FullName} has asked you a new question, you can review it."
+                                ? "You have new question\n" + post.Question
+                                : $"{sender.FullName} has asked you a new question, you can review it.\n" + post.Question
                     };
                     _context.Notifications.Add(notification);
                 }
