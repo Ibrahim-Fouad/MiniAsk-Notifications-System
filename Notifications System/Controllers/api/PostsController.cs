@@ -42,16 +42,16 @@ namespace Notifications_System.Controllers.api
                 var userId = User.Identity.GetUserId();
 
 
-                var notifications = _context.Notifications.Where(n => DbFunctions.DiffSeconds(n.DateCreated, DateTime.Now).Value <= 5 && n.RecieverId == userId).OrderByDescending(n => n.DateCreated).Take(1).ToList();
+                var notifications = _context.Notifications.Where(n => DbFunctions.DiffSeconds(n.DateCreated, DateTime.Now).Value <= 5 && n.RecieverId == userId).Include(n => n.Post).OrderByDescending(n => n.DateCreated).Take(1).ToList();
                 while (notifications.Count == 0)
                 {
                     Thread.Sleep(2500);
-                    notifications = _context.Notifications.Where(n => DbFunctions.DiffSeconds(n.DateCreated, DateTime.Now).Value <= 5 && n.RecieverId == userId).OrderByDescending(n => n.DateCreated).Take(1).ToList();
+                    notifications = _context.Notifications.Where(n => DbFunctions.DiffSeconds(n.DateCreated, DateTime.Now).Value <= 5 && n.RecieverId == userId).Include(n => n.Post).OrderByDescending(n => n.DateCreated).Take(1).ToList();
                 }
                 return Request.CreateResponse(HttpStatusCode.OK, new
                 {
                     success = true,
-                    notifications = notifications[0]
+                    notifications = notifications[ 0 ]
                 });
             }
             catch (Exception ex)

@@ -81,26 +81,33 @@ namespace Notifications_System.Controllers
             if (post.Id == 0)
             {
                 post.DateAsked = DateTime.Now;
+                string notificationMessage = "";
                 if (post.IsAnonymously)
                 {
                     post.SenderId = null;
+                    notificationMessage = $"You have new question\n \"{post.Question}\"";
+
                 }
                 else
                 {
                     var sender = _context.Users.SingleOrDefault(u => u.Id == post.SenderId);
-                    var notification = new Notification
-                    {
-                        RecieverId = post.RecieverId,
-                        SenderId = post.SenderId,
-                        DateCreated = DateTime.Now,
-                        Message =
-                            sender == null
-                                ? "You have new question\n" + post.Question
-                                : $"{sender.FullName} has asked you a new question, you can review it.\n" + post.Question
-                    };
-                    _context.Notifications.Add(notification);
+                    notificationMessage =
+                        sender == null
+                            ? $"You have new question\n\"{post.Question}\""
+                            : $"{sender.FullName} asked you a new question.\n\"{post.Question}\"";
                 }
                 _context.Posts.Add(post);
+                _context.SaveChanges();
+                var notification = new Notification
+                {
+                    RecieverId = post.RecieverId,
+                    SenderId = post.SenderId,
+                    DateCreated = DateTime.Now,
+                    Message = notificationMessage,
+                    PostId = _context.Posts.Max(p => p.Id)
+                };
+                _context.Notifications.Add(notification);
+
             }
             else
             {
@@ -118,7 +125,8 @@ namespace Notifications_System.Controllers
                         RecieverId = postIndb.SenderId,
                         SenderId = postIndb.RecieverId,
                         DateCreated = DateTime.Now,
-                        Message = postIndb.Reciever.FullName + " has answered your question, you can review it."
+                        Message = postIndb.Reciever.FullName + " answered your question.",
+                        PostId = postIndb.Id
                     };
                     _context.Notifications.Add(notification);
                 }
@@ -140,6 +148,31 @@ namespace Notifications_System.Controllers
 
             _context.SaveChanges();
             return RedirectToAction("UnAnswerdQuestion");
+        }
+
+        [Route("account/notifications")]
+        public ActionResult Notifications()
+        {
+            var userId = User.Identity.GetUserId();
+            var notifications = _context.Notifications.Where(n => n.RecieverId == userId).Include(n => n.Sender).OrderByDescending(n => n.DateCreated).ToList();
+            return View(notifications);
+        }
+
+
+        [Route("account/question/{postId}/{notificationId}")]
+        public ActionResult Question(int postId, int notificationId)
+        {
+            //var userId = User.Identity.GetUserId();
+            var post = _context.Posts.Include(p => p.Reciever).SingleOrDefault(p => p.Id == postId);
+            if (post == null)
+            {
+                return HttpNotFound("Post you're looking for isn't exists.");
+            }
+            var notification = _context.Notifications.Single(n => n.Id == notificationId);
+            notification.IsRead = true;
+            _context.SaveChanges();
+
+            return View(post);
         }
 
         public ActionResult About()

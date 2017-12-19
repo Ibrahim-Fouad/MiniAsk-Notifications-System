@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Notifications_System.Models.AskModels;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Notifications_System.Models.NotificationModels
@@ -27,5 +28,9 @@ namespace Notifications_System.Models.NotificationModels
 
         [Required]
         public string RecieverId { get; set; }
+
+        public Post Post { get; set; }
+
+        public int PostId { get; set; }
     }
 }

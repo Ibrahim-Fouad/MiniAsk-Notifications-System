@@ -1,0 +1,80 @@
+﻿@model Notifications_System.Models.AskModels.Post
+@{
+    ViewBag.Title = "Answer";
+}
+<div class="questions">
+    @if (Model.DateAnswerd == null)
+    {
+        using (Html.BeginForm("AskBox", "Home", FormMethod.Post))
+        {
+            <section class="item">
+                <div class="question">
+                    <div class="text">
+                        <input type="text" value="@Model.Question" readonly="readonly" name="Question" style="outline: none; border: none" />
+                    </div>
+                    @if (Model.Sender != null)
+                    {
+                        <div class="sender">
+                            <img src="~/Images/514607.jpg" alt="sender name" /> <a href="/user/@Model.Sender.UniqueUsername">@Model.Sender.FullName</a>
+                        </div>
+                    }
+                </div>
+                <div class="answer">
+                    <div class="text">
+                        <textarea name="Answer" rows="5" class="form-control" placeholder="What is your answer?"></textarea>
+                    </div>
+                </div>
+                <div class="operations">
+                    <div class="row">
+                        <div class="col-sm-8 col-xs-8">
+                        </div>
+                        <div class="col-sm-4 col-xs-4">
+                            <div class="submit">
+                                <button class="btn btn-primary btn-block">
+                                    <i class="fa fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        <!-- To prevent get false in ModelState -->
+            <input type="hidden" value="anytext" name="SenderId" />
+            <input type="hidden" value="anytext" name="RecieverId" />
+
+
+        <!-- To enable edit -->
+            <input type="hidden" value="@Model.Id" name="Id" />
+
+            @Html.AntiForgeryToken()
+        }
+    }
+    else
+    {
+        <section class="item">
+            <div class="question">
+                <div class="text">
+                    @Model.Question
+
+                </div>
+                @if (Model.Sender != null)
+                {
+                    <div class="sender">
+                        <img src="~/Images/514607.jpg" alt="sender name" /> <a href="/user/@Model.Reciever.UniqueUsername">@Model.Sender.FullName</a>
+                    </div>
+                }
+
+            </div>
+            <div class="answer">
+                <div class="reciever">
+                    <img src="~/Images/514607.jpg" alt="reciever name" /> <a href="/user/@Model.Reciever.UniqueUsername">@Model.Reciever.FullName</a>
+                </div>
+                <div class="text">
+                    @Model.Answer
+                </div>
+            </div>
+        </section>
+    }
+
+</div>

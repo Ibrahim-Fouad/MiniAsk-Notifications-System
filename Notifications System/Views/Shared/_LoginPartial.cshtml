@@ -8,7 +8,7 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li class="notifications">
-                <a href="#">
+                <a href="@Url.Action("Notifications", "Home", null)">
                     <i class="fa fa-globe"></i>
                     <span class="notifications-count badge hide">5</span>
                 </a>
@@ -17,7 +17,6 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.GetUserFullname() <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="@Url.Action("Index", "Manage", null)" title="Manage Account">Manage</a></li>
-                    <li><a href="#">Another action</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
                 </ul>

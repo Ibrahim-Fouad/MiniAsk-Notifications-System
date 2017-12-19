@@ -80,13 +80,15 @@
     {
         <script>
             $(document)
-                .ready(function() {
-                    $.getJSON('/ajax/notifications/count',
-                        function(json) {
-                            if (json.success) {
+                .ready(function () {
+                    function getNotificationsNumber() {
+                        $.getJSON('/ajax/notifications/count',
+                        function (json) {
+                            if (json && json.success && json.count > 0) {
                                 $('.notifications-count').html(json.count).removeClass('hide').addClass('animated bounceIn');
                             }
                         });
+                    }
 
 
                     function checkForNewNotifications() {
@@ -95,16 +97,18 @@
                             timeout: 120000,
                             success: function (json) {
                                 if (json.success) {
+                                    getNotificationsNumber();
                                     showAlert(json.notifications.Message);
                                 }
                                 setTimeout(checkForNewNotifications, 5000);
                             },
                             error: function () {
-                                setTimeout(checkForNewNotifications, 5000);
+                                setTimeout(checkForNewNotifications, 1000);
                             }
                         });
                         
                     }
+                    getNotificationsNumber();
 
                     checkForNewNotifications();
                 });

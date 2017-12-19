@@ -119,83 +119,84 @@ textarea {
 
 
 /* Questions section */
-section.questions {
+.notifications-container,
+.questions {
     background: #efefef;
     margin-top: 20px;
 }
 
-section.questions .item {
+.questions .item {
     background: #fff;
     margin: 10px 0;
     padding: 20px;
 }
-section.questions .item .question .text{
+.questions .item .question .text{
     font-size: 20px;
     font-weight: bold;
     color: #000;
 }
-section.questions .item .question .sender {
+.questions .item .question .sender {
     padding-bottom: 10px;
 }
-section.questions .item .question .sender img {
+.questions .item .question .sender img {
     width: 30px;
     border-radius: 50%;
     margin-right: 5px
 }
 
-section.questions .item .question .sender a {
+.questions .item .question .sender a {
     font-size: 13px;
     text-decoration: none;
     color: #AAA;
 }
 
-section.questions .item .answer .reciever img{
+.questions .item .answer .reciever img{
     width: 40px;
     border-radius: 50%;
     margin-right: 5px
 }
 
-section.questions .item .answer .reciever a {
+.questions .item .answer .reciever a {
     text-decoration: none;
     color: #AAA;
 }
 
-section.questions .item .answer .text {
+.questions .item .answer .text {
     padding: 10px;
     color: #000;
 }
-section.questions .item .operations {
+.questions .item .operations {
     padding: 10px 0;
 }
 
-section.questions .item .operations .left-side {
+.questions .item .operations .left-side {
     float: left;
 }
 
-section.questions .item .operations .left-side .like {
+.questions .item .operations .left-side .like {
     color: #AAA;
     font-size: 18px;
 }
 
-section.questions .item .operations .left-side .like i {
+.questions .item .operations .left-side .like i {
     margin-right: 5px;
 }
 
-section.questions .item .operations .right-side {
+.questions .item .operations .right-side {
     float: right;
 }
-section.questions .item .operations .right-side ul {
+.questions .item .operations .right-side ul {
     list-style: none;
     padding: 0
 }
 
-section.questions .item .operations .right-side ul li {
+.questions .item .operations .right-side ul li {
     display: inline;
     padding: 20px;
     font-size: 18px;
 }
 
-section.questions .item .operations .right-side ul li a {
+.questions .item .operations .right-side ul li a {
     color: #AAA;
 }
 /* Questions section */
@@ -221,3 +222,33 @@ li.notifications a:hover .badge {
     color: #ff643c;
     background: white;
 }
+
+/* Notifications off navbar */
+
+.notifications-container {
+    background: #efefef;
+    padding: 12px;
+
+}
+
+.notifications-container ul {
+    padding: 0;
+    list-style: none;
+}
+
+.notifications-container ul li a {
+    text-decoration: none;
+}
+
+
+
+.notifications-container ul li a .message {
+    display: block;
+    color: #000;
+}
+
+.notifications-container ul li a .datetime {
+    color: gray;
+    font-size: 11px;
+}
+

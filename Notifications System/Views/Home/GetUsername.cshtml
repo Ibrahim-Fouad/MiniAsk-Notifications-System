@@ -29,7 +29,7 @@ else
                     @if (post.Sender != null)
                     {
                         <div class="sender">
-                            <img src="~/Images/514607.jpg" alt="sender name" /> <a href="#">@post.Sender.FullName</a>
+                            <img src="~/Images/514607.jpg" alt="sender name" /> <a href="/user/@post.Reciever.UniqueUsername">@post.Sender.FullName</a>
                         </div>
                     }
 

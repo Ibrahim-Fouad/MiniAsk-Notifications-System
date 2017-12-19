@@ -212,6 +212,10 @@
     <Compile Include="Migrations\201712181220272_CreateNotificationsTable.Designer.cs">
       <DependentUpon>201712181220272_CreateNotificationsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712190932158_AddPostCoulmnInNotificationsTable.cs" />
+    <Compile Include="Migrations\201712190932158_AddPostCoulmnInNotificationsTable.Designer.cs">
+      <DependentUpon>201712190932158_AddPostCoulmnInNotificationsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -286,7 +290,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -311,6 +314,8 @@
     <Content Include="Views\Home\Account.cshtml" />
     <Content Include="Views\Home\UnAnswerdQuestion.cshtml" />
     <Content Include="Views\Home\GetUsername.cshtml" />
+    <Content Include="Views\Home\Question.cshtml" />
+    <Content Include="Views\Home\Notifications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -331,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712181220272_CreateNotificationsTable.resx">
       <DependentUpon>201712181220272_CreateNotificationsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712190932158_AddPostCoulmnInNotificationsTable.resx">
+      <DependentUpon>201712190932158_AddPostCoulmnInNotificationsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
